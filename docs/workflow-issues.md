@@ -63,7 +63,7 @@ Now executing **Assignment 3: create-project-structure**. This requires Python a
 
 ## P4: /orchestrate-project-setup timeout and completion issues
 
-**Status: FIXED** (commit TBD in `ai-new-workflow-app-template`) — three infrastructure bugs fixed:
+**Status: FIXED** (commit TBD in `workflow-orchestration-queue-yankee89-a`) — three infrastructure bugs fixed:
 1. **Exit code masking**: Idle-killed runs exited 0, making GitHub Actions report "succeeded" despite incomplete work. Now exits 1.
 2. **`::warning::` → `::error::`**: Idle kills and hard-ceiling kills are failures — annotated as `::error::` so they surface in the workflow summary.
 3. **SIGTERM→SIGKILL escalation**: After sending SIGTERM, waits 10s then sends SIGKILL if the process hasn't exited, preventing zombie/hung processes.
@@ -112,7 +112,7 @@ THIS ISTIME OUT DOING NOTHGING -->> <https://github.com/intel-agency/workflow-or
 
 ## P5: Watchdog race condition causing premature idle-kill during subagent work
 
-**Status: FIXED** (commit `5d89c97` in `ai-new-workflow-app-template`)
+**Status: FIXED** (commit `5d89c97` in `workflow-orchestration-queue-yankee89-a`)
 
 **Root Cause:** Race condition in `run_opencode_prompt.sh` watchdog loop. When checking server activity via `/proc/<pid>/io write_bytes`, a single 30-second interval where `write_bytes` didn't change caused `server_io_active` to flip to `false`. The fallback used `server_log_idle` (mtime of `/tmp/opencode-serve.log`), which only reflected server **startup** time — not last activity. So `server_idle` jumped from 0 to the full runtime (~950s), immediately triggering the 15m idle kill even though the server was actively working 30 seconds earlier.
 

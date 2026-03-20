@@ -1,6 +1,6 @@
 {
-  "name": "ai-new-workflow-app-template",
-  "image": "ghcr.io/intel-agency/ai-new-workflow-app-template/devcontainer:main-latest",
+  "name": "workflow-orchestration-queue-yankee89-a",
+  "image": "ghcr.io/intel-agency/workflow-orchestration-queue-yankee89-a/devcontainer:main-latest",
   "containerEnv": {
     "DOTNET_ROOT": "/usr/share/dotnet"
   },
