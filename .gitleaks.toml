@@ -1,0 +1,10 @@
+# Gitleaks configuration for OS-APOW
+# Allowlist for known false positives in test fixtures and example config
+
+[allowlist]
+  description = "Global allowlist for test fixtures and example config"
+  paths = [
+    '''\.env\.example$''',
+    '''tests/unit/test_work_item\.py$''',
+  ]
+# Updated 2026-04-13T01:32:03Z

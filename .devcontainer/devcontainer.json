@@ -1,5 +1,5 @@
 {
-  "name": "workflow-orchestration-queue-yankee89-a",
+  "name": "workflow-orchestration-queue-yankee89-a-devcontainer",
   "image": "ghcr.io/intel-agency/workflow-orchestration-queue-yankee89-a/devcontainer:main-latest",
   "containerEnv": {
     "DOTNET_ROOT": "/usr/share/dotnet"
